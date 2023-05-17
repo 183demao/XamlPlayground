@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="XamlPlayground.Page.BannerPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:XamlPlayground.Page"
+             mc:Ignorable="d" 
+             xmlns:controls="clr-namespace:XamlPlayground.Control"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <StackPanel x:Name="bannerGroup" ClipToBounds="False" Margin="16">
+            <StackPanel.RenderTransform>
+                <TranslateTransform x:Name="translate" Y="0"/>
+            </StackPanel.RenderTransform>
+            <controls:BannerItem Margin="0,0,0,8" HorizontalAlignment="Stretch" VerticalAlignment="Top"
+                          Text="消息消息消息息消消息消消息消消息消消息消" Level="Error"/>
+            <controls:BannerItem Margin="0,0,0,8" HorizontalAlignment="Stretch" VerticalAlignment="Top"
+                          Text="消息消息消息消息息消消息消消息消消息消消息xx消" Level="Information"/>
+            <controls:BannerItem Margin="0,0,0,8" HorizontalAlignment="Stretch" VerticalAlignment="Top"
+                          Text="消息消息息消消息消消息消消息消消息息消消息消消息消消息消消息消息消息xx消" Level="Warning"/>
+            <controls:BannerItem Margin="0,0,0,8" HorizontalAlignment="Stretch" VerticalAlignment="Top"
+                          Text="消息消息消息消息消消息消消息消消息消消息息xx消" Level="Information"/>
+        </StackPanel>
+        <Button Click="OnRemoveClick" Content="Remove" Margin="0,0,22,24" Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100"/>
+        <Button Click="OnAddClick" Content="Add" Margin="0,0,141,24" Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100"/>
+    </Grid>
+</UserControl>
