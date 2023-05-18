@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="XamlPlayground.Control.ToastItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:XamlPlayground.Control"
+             mc:Ignorable="d" 
+             d:DesignHeight="80" Height="80">
+    <UserControl.Resources>
+        <Path x:Key="SuccessPath" Stroke="White" StrokeThickness="2" Data="M6,12L10,16L18,8"/>
+        <Path x:Key="InformationPath" Stroke="White" StrokeThickness="2" Data="M12,6L12,8M12,10L12,18"/>
+        <Path x:Key="WarningPath" Stroke="White" StrokeThickness="2" Data="M12,6L12,14M12,16L12,18"/> 
+        <Path x:Key="ErrorPath" Stroke="White" StrokeThickness="2" Data="M8,8L16,16M8,16L16,8"/>
+        <LinearGradientBrush x:Key="SuccessColor">
+            <GradientStop Color="#FF214446" Offset="0"/>
+            <GradientStop Color="#FF232930" Offset="1"/>   
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="InformationColor">
+            <GradientStop Color="#FF2B4555" Offset="0"/>
+            <GradientStop Color="#FF2A2F38" Offset="1"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="WarningColor">
+            <GradientStop Color="#FF494437" Offset="0"/>
+            <GradientStop Color="#FF2A2F38" Offset="1"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="ErrorColor">
+            <GradientStop Color="#FF744635" Offset="0"/>
+            <GradientStop Color="#FF323137" Offset="1"/>
+        </LinearGradientBrush>
+        <SolidColorBrush x:Key="SuccessIconColor" Color="#14BEAE"/>
+        <SolidColorBrush x:Key="InformationIconColor" Color="#5ED1FF"/>
+        <SolidColorBrush x:Key="WarningIconColor" Color="#FFC232"/>
+        <SolidColorBrush x:Key="ErrorIconColor" Color="#E36731"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="80"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="80"/>
+        </Grid.ColumnDefinitions>
+        <Border x:Name="background" Grid.ColumnSpan="3" CornerRadius="4" Background="{StaticResource InformationColor}"/>
+        <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+            <Border Width="36" Height="36" Margin="2" CornerRadius="18" >
+                <Border x:Name="icon" Background="{StaticResource InformationIconColor}" CornerRadius="12" Width="24" Height="24" Child="{StaticResource InformationPath}" RenderTransformOrigin="0.5,0.5">
+                    <Border.RenderTransform>
+                        <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                    </Border.RenderTransform>
+                </Border>
+            </Border>
+            <TextBlock x:Name="text" Margin="16,0,0,0" MinWidth="88" Text="Info" VerticalAlignment="Center"
+                       FontWeight="Bold" Foreground="White" FontSize="22"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,8 +1,8 @@
-﻿using System.Windows.Media.Animation;
+﻿namespace XamlPlayground.Page;
+
+using System.Windows.Media.Animation;
 using XamlPlayground.Control;
 using XamlPlayground.Model;
-
-namespace XamlPlayground.Page;
 
 /// <summary>
 /// Interaction logic for Banner.xaml
