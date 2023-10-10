@@ -1,6 +1,6 @@
 ﻿namespace AyatoAppDemo;
 
-using AyatoPack;
+using Microsoft.Extensions.Hosting;
 using System;
 using System.Windows;
 
@@ -9,10 +9,13 @@ using System.Windows;
 /// </summary>
 public partial class MainWindow : Window
 {
-    public MainWindow()
+    public MainWindow(IHostApplicationLifetime applicationLifetime)
     {
         InitializeComponent();
+        this.applicationLifetime = applicationLifetime;
     }
 
-    protected override void OnClosed(EventArgs e) => AyatoApp.Current.Shutdown();
+    private readonly IHostApplicationLifetime applicationLifetime;
+
+    protected override void OnClosed(EventArgs e) => applicationLifetime.StopApplication();
 }

@@ -4,16 +4,16 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-internal class AppStartupService<TApplication, TMainWindow> : IHostedService, IRecipient<RequestApplicationShutdownMessage>
+internal class AppStartupService<TApplication, TMainWindow> : IHostedService
     where TApplication : AyatoApp
     where TMainWindow : System.Windows.Window
 {
-    public AppStartupService(TApplication application, TMainWindow mainWindow)
+    public AppStartupService(TApplication application, TMainWindow mainWindow, IHostApplicationLifetime applicationLifetime)
     {
         this.application = application;
         this.mainWindow = mainWindow;
 
-        WeakReferenceMessenger.Default.Register(this);
+        applicationLifetime.ApplicationStopping.Register(() => application.Shutdown(Environment.ExitCode));
     }
 
     private readonly TApplication application;
@@ -28,9 +28,6 @@ internal class AppStartupService<TApplication, TMainWindow> : IHostedService, IR
 
     public Task StopAsync(CancellationToken cancellationToken)
     {
-        application.Shutdown(Environment.ExitCode);
         return Task.CompletedTask;
     }
-
-    public void Receive(RequestApplicationShutdownMessage message) => AyatoHost.CurrentHost.StopAsync();
 }

@@ -5,7 +5,8 @@ using System;
 
 public partial class App : AyatoApp
 {
-    public App() { }
-
-    public App(IServiceProvider serviceProvider) : base(serviceProvider) { }
+    public App(IServiceProvider serviceProvider) : base(serviceProvider)
+    {
+        InitializeComponent();
+    }
 }
