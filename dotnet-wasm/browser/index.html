@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--  Licensed to the .NET Foundation under one or more agreements. -->
+<!-- The .NET Foundation licenses this file to you under the MIT license. -->
+<html>
+
+<head>
+  <title>dotnet-wasm</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style type="text/css" media="screen">
+    body {
+        overflow: hidden;
+    }
+
+    #editor {
+        margin: 0;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+  </style>
+  <script type='module' src="./main.js"></script>
+</head>
+<body>
+  <pre id="editor"></pre>
+  
+  <script src="ace.js" type="text/javascript" charset="utf-8"></script>
+  <script src="ext-beautify.js" type="text/javascript" charset="utf-8"></script>
+  <script src="ext-searchbox.js" type="text/javascript" charset="utf-8"></script>
+  <script src="ext-language_tools.js"></script>
+  <script src="ext-error_marker.js"></script>
+
+  <script>
+      ace.require("ace/ext/language_tools");
+      var editor = ace.edit("editor");
+      editor.setTheme("ace/theme/eclipse");
+      editor.setFontSize(18);
+      editor.session.setTabSize(4);
+      editor.session.setUseSoftTabs(true);
+      editor.setShowPrintMargin(false);
+      editor.session.setMode("ace/mode/csharp");
+  
+      editor.setOptions({
+          enableBasicAutocompletion: true,
+          enableSnippets: true,
+          enableLiveAutocompletion: true
+      });
+  </script>
+  
+  </body>
+</html>
